@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinguaLab | 背单词</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  <style>
+    .vocab-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .word-card {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      border-radius: 16px;
+      color: white;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      opacity: 1; /* 确保卡片不透明 */
+    }
+
+    .word-card.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      backface-visibility: hidden;
+      width: 100%;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .card-flip {
+      perspective: 1000px;
+      width: 100%;
+      height: 300px;
+      margin-bottom: 30px;
+    }
+
+    .card-flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .card-flip-inner.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-flip-front,
+    .card-flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .card-flip-front {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: white;
+    }
+
+    .card-flip-back {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+    .word-text {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .phonetic {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    .definition {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      background: rgba(255,255,255,0.2);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .example-sentence {
+      font-size: 1.2rem;
+      font-style: italic;
+      opacity: 0.9;
+      margin-top: 15px;
+    }
+
+    .stats-panel {
+      background: white;
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      height: 100%;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .rating-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .rating-btn {
+      flex: 1;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .rating-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn-hard {
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
+    }
+
+    .btn-medium {
+      background: linear-gradient(to right, #38ef7d, #11998e);
+    }
+
+    .btn-easy {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+
+    .progress-text {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .action-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-flip {
+      background: #6c757d;
+      color: white;
+    }
+
+    .btn-next {
+      background: #007bff;
+      color: white;
+    }
+
+    .studied-words {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #4ecdc4;
+      color: white;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    .studied-words .count {
+      font-size: 1.5rem;
+    }
+
+    .studied-words .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    .words-list {
+      position: fixed;
+      bottom: 120px;
+      right: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      padding: 20px;
+      width: 300px;
+      max-height: 400px;
+      overflow-y: auto;
+      display: none;
+      z-index: 1000;
+    }
+
+    .words-list.show {
+      display: block;
+    }
+
+    .words-list h4 {
+      margin-top: 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .word-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.9rem;
+    }
+
+    .word-item:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-wrap">
+    <div class="container-1200 d-flex align-items-center justify-content-between">
+      <a class="brand" href="english.html">LinguaLab</a>
+      <nav class="nav-links">
+        <a href="english.html">首页</a>
+        <a href="vocab.html" class="active">背单词</a>
+        <a href="audio.html">听音频</a>
+        <a href="movies.html">看电影</a>
+        <a href="articles.html">文章</a>
+        <a href="courses.html">课程</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="vocab-container page-space">
+  <div class="text-center mb-5">
+    <h1 class="page-title">背单词</h1>
+    <p class="text-body-secondary lead">使用科学记忆法高效学习英语单词</p>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card-flip">
+        <div class="card-flip-inner" id="wordCard">
+          <!-- 卡片正面：单词和音标 -->
+          <div class="card-flip-front">
+            <h3 class="word-text" id="currentWord">serendipity</h3>
+            <p class="phonetic" id="wordPhonetic">[ˌserənˈdɪpəti]</p>
+          </div>
+
+          <!-- 卡片反面：释义、词性、例句 -->
+          <div class="card-flip-back">
+            <div class="definition" id="wordDefinition">意外发现美好事物的能力</div>
+            <div class="example-sentence" id="wordExample">Finding this book was a serendipity.</div>
+            <div class="example-translation" id="exampleTranslation">找到这本书真是个意外的惊喜。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="action-btn btn-flip" id="prevBtn">上一个</button>
+        <button class="action-btn btn-next" id="nextBtn">下一个</button>
+      </div>
+
+      <div class="rating-buttons">
+        <button class="rating-btn btn-hard" id="hardBtn">困难</button>
+        <button class="rating-btn btn-easy" id="easyBtn">良好</button>
+      </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="stats-panel">
+        <h3 class="text-center mb-4">学习统计</h3>
+        <div class="stat-item" style="background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);">
+          <span class="stat-number" id="studiedCount">0</span>
+          <span>已学单词</span>
+        </div>
+        <!-- 删除:今日学习统计项 -->
+        <div class="stat-item" style="background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);">
+          <span class="stat-number" id="masteryRate">0%</span>
+          <span>掌握率</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="studied-words" id="studiedWordsBtn">
+  <div class="count" id="studiedWordsCount">0</div>
+  <div class="label">已学</div>
+</div>
+
+<div class="words-list" id="wordsList">
+  <h4>已学习单词</h4>
+  <div id="studiedWordsContent">
+    <div class="word-item">暂无已学习单词</div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container-1200">
+    <small>© <span id="year"></span> LinguaLab</small>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 初始化词汇数据
+    let vocabDeck = [
+      { word: "serendipity", phonetic: "[ˌserənˈdɪpəti]", pos: "noun", definition: "意外发现美好事物的能力", example: "Finding this book was a serendipity.", exampleTranslation: "找到这本书真是个意外的惊喜。" },
+      { word: "ephemeral", phonetic: "[ɪˈfemərəl]", pos: "adjective", definition: "短暂的，转瞬即逝的", example: "Youth is ephemeral, so cherish it.", exampleTranslation: "青春是短暂的，所以要珍惜它。" },
+      { word: "ubiquitous", phonetic: "[juːˈbɪkwɪtəs]", pos: "adjective", definition: "无处不在的，普遍存在的", example: "Mobile phones are ubiquitous in modern society.", exampleTranslation: "在现代社会中，手机无处不在。" },
+      { word: "quintessential", phonetic: "[ˌkwɪntɪˈsenʃəl]", pos: "adjective", definition: "典型的，精髓的", example: "This dish is the quintessential Italian pasta.", exampleTranslation: "这道菜是意大利面条的典型代表。" },
+      { word: "melancholy", phonetic: "[ˈmelənkəli]", pos: "noun", definition: "忧郁，悲伤", example: "There was a sense of melancholy in the music.", exampleTranslation: "音乐中有一种忧郁的感觉。" },
+      { word: "eloquent", phonetic: "[ˈeləkwənt]", pos: "adjective", definition: "雄辩的，有口才的", example: "She gave an eloquent speech at the conference.", exampleTranslation: "她在会议上发表了雄辩的演讲。" },
+      { word: "resilient", phonetic: "[rɪˈzɪliənt]", pos: "adjective", definition: "有韧性的，适应力强的", example: "Children are often remarkably resilient.", exampleTranslation: "孩子们通常具有非凡的适应能力。" },
+      { word: "diligent", phonetic: "[ˈdɪlɪdʒənt]", pos: "adjective", definition: "勤奋的，勤勉的", example: "She was diligent in her studies and always achieved high grades.", exampleTranslation: "她学习勤奋，总是取得优异成绩。" },
+      { word: "ambivalent", phonetic: "[æmˈbɪvələnt]", pos: "adjective", definition: "矛盾的，有矛盾情绪的", example: "He felt ambivalent about accepting the job offer.", exampleTranslation: "他对接受这份工作感到矛盾。" },
+      { word: "pragmatic", phonetic: "[præɡˈmætɪk]", pos: "adjective", definition: "务实的，实用主义的", example: "We need a pragmatic approach to solve this problem.", exampleTranslation: "我们需要一种务实的方法来解决这个问题。" }
+    ];
+    let currentIndex = 0;
+    let studiedWords = [];
+
+    // 从localStorage加载已学习单词
+    const savedStudied = localStorage.getItem('studied_words');
+    if (savedStudied) {
+      studiedWords = JSON.parse(savedStudied);
+    }
+
+    // 渲染当前单词
+    function renderCurrentWord() {
+      if (vocabDeck.length === 0) return;
+
+      const word = vocabDeck[currentIndex];
+      document.getElementById('currentWord').textContent = word.word;
+      document.getElementById('wordPhonetic').textContent = word.phonetic;
+      document.getElementById('wordDefinition').innerHTML = `<div class="pos-badge">${word.pos}</div> ${word.definition}`;
+      document.getElementById('wordExample').textContent = word.example;
+      document.getElementById('exampleTranslation').textContent = word.exampleTranslation;
+    }
+
+    // 更新统计信息
+    function updateStats() {
+      const stats = JSON.parse(localStorage.getItem('vocabStats') || '{}');
+
+      // 设置默认值
+      if (!stats.studiedCount) stats.studiedCount = 0;
+      if (!stats.masteryRate) stats.masteryRate = 0;
+
+      document.getElementById('studiedCount').textContent = stats.studiedCount;
+      document.getElementById('masteryRate').textContent = Math.round(stats.masteryRate) + '%';
+      document.getElementById('studiedWordsCount').textContent = studiedWords.length;
+
+      // 更新已学习单词列表
+      updateStudiedWordsList();
+    }
+
+    // 更新已学习单词列表
+    function updateStudiedWordsList() {
+      const content = document.getElementById('studiedWordsContent');
+      if (studiedWords.length === 0) {
+        content.innerHTML = '<div class="word-item">暂无已学习单词</div>';
+        return;
+      }
+
+      let html = '';
+      studiedWords.slice(-10).forEach(word => {
+        html += `<div class="word-item">${word.word} - ${word.definition}</div>`;
+      });
+      content.innerHTML = html;
+    }
+
+    // 翻转卡片
+    document.getElementById('wordCard').addEventListener('click', function() {
+      this.classList.toggle('flipped');
+    });
+
+    // 上一个单词
+    document.getElementById('prevBtn').addEventListener('click', function() {
+      currentIndex = (currentIndex - 1 + vocabDeck.length) % vocabDeck.length;
+      document.getElementById('wordCard').classList.remove('flipped');
+      renderCurrentWord();
+    });
+
+    // 下一个单词
+    document.getElementById('nextBtn').addEventListener('click', function() {
+      currentIndex = (currentIndex + 1) % vocabDeck.length;
+      document.getElementById('wordCard').classList.remove('flipped');
+      renderCurrentWord();
+    });
+
+    // 评价按钮事件
+    document.getElementById('hardBtn').addEventListener('click', function() {
+      // 点击困难按钮时翻转卡片
+      document.getElementById('wordCard').classList.toggle('flipped');
+    });
+
+    document.getElementById('easyBtn').addEventListener('click', function() {
+      rateWord(5);
+    });
+
+    // 评价单词
+    function rateWord(rating) {
+      const word = vocabDeck[currentIndex];
+
+      // 检查单词是否已经学习过
+      const isAlreadyStudied = studiedWords.some(w => w.word === word.word);
+
+      // 只有新学的单词才添加到已学习列表
+      if (!isAlreadyStudied) {
+        studiedWords.push({
+          word: word.word,
+          definition: word.definition,
+          date: new Date().toISOString()
+        });
+        localStorage.setItem('studied_words', JSON.stringify(studiedWords));
+      }
+
+      // 更新统计数据
+      let stats = JSON.parse(localStorage.getItem('vocabStats') || '{}');
+      if (!stats.studiedCount) stats.studiedCount = 0;
+      if (!stats.masteryRate) stats.masteryRate = 0;
+
+      // 只有新学单词才增加计数
+      if (!isAlreadyStudied) {
+        stats.studiedCount++;
+      }
+
+      // 掌握率应该是已学单词数占总单词数的比例
+      stats.masteryRate = (studiedWords.length / vocabDeck.length) * 100;
+
+      localStorage.setItem('vocabStats', JSON.stringify(stats));
+
+      // 更新页面显示
+      document.getElementById('studiedCount').textContent = studiedWords.length; // 显示实际已学单词数
+      document.getElementById('masteryRate').textContent = Math.round(stats.masteryRate) + '%';
+
+      // 移动到下一个单词
+      currentIndex = (currentIndex + 1) % vocabDeck.length;
+      document.getElementById('wordCard').classList.remove('flipped');
+      renderCurrentWord();
+      updateStudiedWordsList();
+    }
+
+    // 显示/隐藏已学习单词列表
+    document.getElementById('studiedWordsBtn').addEventListener('click', function() {
+      document.getElementById('wordsList').classList.toggle('show');
+    });
+
+    // 点击页面其他地方隐藏列表
+    document.addEventListener('click', function(event) {
+      const wordsList = document.getElementById('wordsList');
+      const studiedWordsBtn = document.getElementById('studiedWordsBtn');
+
+      if (!wordsList.contains(event.target) && !studiedWordsBtn.contains(event.target)) {
+        wordsList.classList.remove('show');
+      }
+    });
+
+    // 初始化
+    renderCurrentWord();
+    updateStats();
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+

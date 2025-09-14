@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinguaLab | 电影</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <div class="container-1200 d-flex align-items-center justify-content-between">
+        <a class="brand" href="english.html">LinguaLab</a>
+        <nav class="nav-links">
+          <a href="english.html">首页</a>
+          <a href="vocab.html">背单词</a>
+          <a href="audio.html">听音频</a>
+          
+          <a href="movies.html" class="active">看电影</a>
+          <a href="articles.html">文章</a>
+          <a href="courses.html">课程</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-1200 page-space">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">电影分类</div>
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action active" data-category="all">全部电影</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="科幻片">科幻片</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="动作片">动作片</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="剧情片">剧情片</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="喜剧片">喜剧片</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="悬疑片">悬疑片</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="爱情片">爱情片</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="历史片">历史片</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="纪录片">纪录片</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-9">
+        <h1 class="page-title">电影与词汇</h1>
+        <div class="row g-3" id="movieGrid">
+          <div class="col-6 movie-item" data-category="科幻片">
+            <div class="card movie-card" data-id="m1" data-title="Inception" data-description="影片讲述了一群能够进入他人梦境的盗贼，试图在目标人物的潜意识中植入一个想法的故事。这部电影探讨了现实与梦境之间的界限，以及人类潜意识的复杂性。">
+              <img src="https://img0.baidu.com/it/u=3598532192,2153943352&fm=253&app=138&f=JPEG?w=384&h=569" alt="盗梦空间" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>Inception</strong> 盗梦空间 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 movie-item" data-category="动作片">
+            <div class="card movie-card" data-id="m2" data-title="The Dark Knight" data-description="蝙蝠侠面对新的威胁——小丑，一个疯狂的犯罪大师。影片探讨了正义与邪恶、秩序与混乱之间的界限。小丑试图证明任何人只要受到足够刺激都会堕落成恶人。">
+              <img src="https://img1.mydrivers.com/img/20240417/a99e7d87-2e58-4fb6-9431-7868c67dad5e.jpg" alt="黑暗骑士" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>The Dark Knight</strong> 黑暗骑士 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 movie-item" data-category="科幻片">
+            <div class="card movie-card" data-id="m3" data-title="Interstellar" data-description="在地球环境恶化、粮食危机的背景下，一组宇航员通过穿越虫洞寻找人类新家园的故事。影片探讨了爱、时间和人类生存等深刻主题。">
+              <img src="https://img0.baidu.com/it/u=461815889,3717839191&fm=253&app=138&f=JPEG?w=800&h=800" alt="星际穿越" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>Interstellar</strong> 星际穿越 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 movie-item" data-category="剧情片">
+            <div class="card movie-card" data-id="m4" data-title="Forrest Gump" data-description="影片通过一个智商不高但心地善良的男子福瑞斯特·甘普的视角，展现了美国几十年的历史变迁。故事传达了关于命运、坚持和爱的深刻寓意。">
+              <img src="https://pic2.zhimg.com/100/v2-33442bfa29a3e83cb9753290feb004db_r.jpg" alt="阿甘正传" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>Forrest Gump</strong> 阿甘正传 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 movie-item" data-category="爱情片">
+            <div class="card movie-card" data-id="m5" data-title="Titanic" data-description="以1912年泰坦尼克号沉船事件为背景，讲述了来自不同社会阶层的杰克和露丝之间的爱情故事。影片展现了爱情的力量以及面对灾难时的人性光辉。">
+              <img src="https://pic.rmb.bdstatic.com/bjh/events/4d1a3afcb30bf2510d804367d12383673467.jpeg@h_1280" alt="泰坦尼克号" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>Titanic</strong> 泰坦尼克号 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 movie-item" data-category="动作片">
+            <div class="card movie-card" data-id="m6" data-title="The Avengers" data-description="当 Loki 企图征服地球时，神盾局指挥官 Nick Fury 将集结一群超级英雄来拯救世界。影片展现了团队合作的重要性以及英雄们各自的成长。">
+              <img src="https://picx.zhimg.com/v2-7cc2fa2583b5661069c737381361e0fd_r.jpg?source=2c26e567" alt="复仇者联盟" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>The Avengers</strong> 复仇者联盟 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <!-- 新增喜剧片 -->
+          <div class="col-6 movie-item" data-category="喜剧片" style="display: none;">
+            <div class="card movie-card" data-id="m7" data-title="The Grand Budapest Hotel" data-description="讲述了一家欧洲著名酒店的礼宾员和他的年轻门生在20世纪30年代的冒险故事。影片以独特的视觉风格和幽默感展现了那个时代的风貌。">
+              <img src="https://qingju.v.sc.cn/uploadfile/cms/2023/0528/1685263364616191.jpg" alt="布达佩斯大饭店" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>The Grand Budapest Hotel</strong> 布达佩斯大饭店 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <!-- 新增悬疑片 -->
+          <div class="col-6 movie-item" data-category="悬疑片" style="display: none;">
+            <div class="card movie-card" data-id="m8" data-title="Shutter Island" data-description="两名联邦执法官前往一座孤岛上的精神病院调查一名女病人失踪案件，但随着调查深入，真相变得越来越扑朔迷离。">
+              <img src="https://img1.baidu.com/it/u=2515495995,2168640275&fm=253&app=138&f=JPEG?w=500&h=633" alt="禁闭岛" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>Shutter Island</strong> 禁闭岛 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <!-- 新增历史片 -->
+          <div class="col-6 movie-item" data-category="历史片" style="display: none;">
+            <div class="card movie-card" data-id="m9" data-title="Schindler's List" data-description="讲述了一名德国商人在二战期间保护1000多名犹太人免遭纳粹屠杀的真实故事。影片深刻展现了人性的光辉和黑暗。">
+              <img src="https://b0.bdstatic.com/ugc/sEayqvPU6NJ3ebHLETtunw30864ce08bb0dfb50db2c984cefbc41d.jpg" alt="辛德勒的名单" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>Schindler's List</strong> 辛德勒的名单 词汇包</div>
+              </div>
+            </div>
+          </div>
+          <!-- 新增纪录片 -->
+          <div class="col-6 movie-item" data-category="纪录片" style="display: none;">
+            <div class="card movie-card" data-id="m10" data-title="Planet Earth" data-description="BBC制作的自然纪录片系列，展示了地球上各种生态环境和野生动物的生活状态，被誉为自然纪录片的巅峰之作。">
+              <img src="https://img0.baidu.com/it/u=4076693445,2679262276&fm=253&app=138&f=JPEG?w=500&h=650" alt="地球脉动" style="width:100%; height:300px; object-fit:cover">
+              <div class="card-body d-flex align-items-center justify-content-between">
+                <div><strong>Planet Earth</strong> 地球脉动 词汇包</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="section">
+          <h3 class="section-title">场景词汇（中英对照）</h3>
+          <div id="vocabContainer">
+            <!-- 科幻片词汇 -->
+            <div class="vocab-category" data-category="科幻片">
+              <ul class="history-list">
+                <li><strong>dream invasion</strong> 梦境入侵</li>
+                <li><strong>totem</strong> 图腾（用于鉴别是否在梦中）</li>
+                <li><strong>time dilation</strong> 时间膨胀</li>
+                <li><strong>paradox</strong> 悖论（时间旅行中的矛盾）</li>
+                <li><strong>quantum</strong> 量子（物理学概念）</li>
+                <li><strong>black hole</strong> 黑洞</li>
+                <li><strong>multiverse</strong> 多元宇宙</li>
+                <li><strong>time loop</strong> 时间循环</li>
+                <li><strong>artificial intelligence</strong> 人工智能</li>
+                <li><strong>space-time continuum</strong> 时空连续体</li>
+              </ul>
+            </div>
+            
+            <!-- 动作片词汇 -->
+            <div class="vocab-category" data-category="动作片" style="display: none;">
+              <ul class="history-list">
+                <li><strong>vigilante</strong> 自发执法者（蝙蝠侠被称为 vigilante）</li>
+                <li><strong>superhero</strong> 超级英雄</li>
+                <li><strong>villain</strong> 反派角色</li>
+                <li><strong>plot twist</strong> 情节转折</li>
+                <li><strong>climax</strong> 高潮</li>
+                <li><strong>showdown</strong> 最终对决</li>
+                <li><strong>rescue mission</strong> 营救任务</li>
+                <li><strong>explosive</strong> 爆炸物</li>
+                <li><strong>stealth</strong> 隐蔽行动</li>
+                <li><strong>weaponry</strong> 武器装备</li>
+              </ul>
+            </div>
+            
+            <!-- 剧情片词汇 -->
+            <div class="vocab-category" data-category="剧情片" style="display: none;">
+              <ul class="history-list">
+                <li><strong>life is like a box of chocolates</strong> 生活就像一盒巧克力</li>
+                <li><strong>destiny</strong> 命运</li>
+                <li><strong>determination</strong> 决心</li>
+                <li><strong>persistence</strong> 坚持不懈</li>
+                <li><strong>simplicity</strong> 简单纯朴</li>
+                <li><strong>innocence</strong> 天真纯朴</li>
+                <li><strong>perseverance</strong> 百折不挠</li>
+                <li><strong>honesty</strong> 诚实</li>
+                <li><strong>integrity</strong> 正直</li>
+                <li><strong>humanity</strong> 人性</li>
+              </ul>
+            </div>
+            
+            <!-- 喜剧片词汇 -->
+            <div class="vocab-category" data-category="喜剧片" style="display: none;">
+              <ul class="history-list">
+                <li><strong>eccentric</strong> 古怪的</li>
+                <li><strong>whimsical</strong> 异想天开的</li>
+                <li><strong>quirky</strong> 离奇有趣的</li>
+                <li><strong>satire</strong> 讽刺</li>
+                <li><strong>farce</strong> 闹剧</li>
+                <li><strong>witty</strong> 机智的</li>
+                <li><strong>humor</strong> 幽默</li>
+                <li><strong>comedy</strong> 喜剧</li>
+                <li><strong>parody</strong> 滑稽模仿</li>
+                <li><strong>absurd</strong> 荒谬的</li>
+              </ul>
+            </div>
+            
+            <!-- 悬疑片词汇 -->
+            <div class="vocab-category" data-category="悬疑片" style="display: none;">
+              <ul class="history-list">
+                <li><strong>suspense</strong> 悬念</li>
+                <li><strong>mystery</strong> 神秘</li>
+                <li><strong>investigation</strong> 调查</li>
+                <li><strong>detective</strong> 侦探</li>
+                <li><strong>clue</strong> 线索</li>
+                <li><strong>evidence</strong> 证据</li>
+                <li><strong>suspect</strong> 嫌疑人</li>
+                <li><strong>alibi</strong> 不在场证明</li>
+                <li><strong>red herring</strong> 转移注意力的线索</li>
+                <li><strong>revelation</strong> 揭露真相</li>
+              </ul>
+            </div>
+            
+            <!-- 爱情片词汇 -->
+            <div class="vocab-category" data-category="爱情片" style="display: none;">
+              <ul class="history-list">
+                <li><strong>romance</strong> 爱情</li>
+                <li><strong>passion</strong> 激情</li>
+                <li><strong>heartbreak</strong> 心碎</li>
+                <li><strong>affection</strong> 喜爱</li>
+                <li><strong>devotion</strong> 忠诚</li>
+                <li><strong>infatuation</strong> 迷恋</li>
+                <li><strong>commitment</strong> 承诺</li>
+                <li><strong>intimacy</strong> 亲密</li>
+                <li><strong>longing</strong> 渴望</li>
+                <li><strong>eternal</strong> 永恒的</li>
+              </ul>
+            </div>
+            
+            <!-- 历史片词汇 -->
+            <div class="vocab-category" data-category="历史片" style="display: none;">
+              <ul class="history-list">
+                <li><strong>historical</strong> 历史的</li>
+                <li><strong>biography</strong> 传记</li>
+                <li><strong>legacy</strong> 遗产</li>
+                <li><strong>heritage</strong> 遗产</li>
+                <li><strong>civilization</strong> 文明</li>
+                <li><strong>revolution</strong> 革命</li>
+                <li><strong>warfare</strong> 战争</li>
+                <li><strong>heroism</strong> 英雄主义</li>
+                <li><strong>sacrifice</strong> 牺牲</li>
+                <li><strong>survival</strong> 生存</li>
+              </ul>
+            </div>
+            
+            <!-- 纪录片词汇 -->
+            <div class="vocab-category" data-category="纪录片" style="display: none;">
+              <ul class="history-list">
+                <li><strong>documentary</strong> 纪录片</li>
+                <li><strong>wildlife</strong> 野生动物</li>
+                <li><strong>ecosystem</strong> 生态系统</li>
+                <li><strong>conservation</strong> 保护</li>
+                <li><strong>nature</strong> 自然</li>
+                <li><strong>habitat</strong> 栖息地</li>
+                <li><strong>species</strong> 物种</li>
+                <li><strong>environment</strong> 环境</li>
+                <li><strong>climate</strong> 气候</li>
+                <li><strong>biodiversity</strong> 生物多样性</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 电影详情模态框 -->
+  <div class="modal fade" id="movieDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="movieDetailTitle">电影详情</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-8">
+              <h4 id="movieName">电影名称</h4>
+              <p id="movieDescription" class="text-muted">电影描述</p>
+              
+              <div class="mt-4">
+                <h5>学习内容</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">高频词汇学习</li>
+                  <li class="list-group-item">经典对白分析</li>
+                  <li class="list-group-item">文化背景解读</li>
+                  <li class="list-group-item">语法点讲解</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body text-center">
+                  <h5 class="card-title">开始学习</h5>
+                  <a href="coming-soon.html" class="btn btn-primary w-100 mt-3" id="startLearningBtn">开始学习</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container-1200">
+      <small>© <span id="year"></span> LinguaLab</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // 页面加载时检查是否需要更新统计数据
+    window.addEventListener('DOMContentLoaded', function() {
+      if (sessionStorage.getItem('updateMovieStats') === 'true') {
+        // 更新显示的统计数据
+        updateMovieStatsDisplay();
+        // 清除标记
+        sessionStorage.removeItem('updateMovieStats');
+      }
+      
+      // 添加电影卡片点击事件
+      document.querySelectorAll('.movie-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+          // 如果点击的是按钮，则不触发模态框
+          if (e.target.classList.contains('add-movie')) return;
+          
+          const title = this.getAttribute('data-title');
+          const description = this.getAttribute('data-description');
+          
+          // 填充模态框内容
+          document.getElementById('movieDetailTitle').textContent = title + ' 详情';
+          document.getElementById('movieName').textContent = title;
+          document.getElementById('movieDescription').textContent = description;
+          
+          // 设置学习按钮的电影ID
+          const movieId = this.getAttribute('data-id');
+          document.getElementById('startLearningBtn').setAttribute('data-movie-id', movieId);
+          
+          // 显示模态框
+          const modal = new bootstrap.Modal(document.getElementById('movieDetailModal'));
+          modal.show();
+        });
+      });
+      
+      // 添加学习按钮事件
+      document.getElementById('startLearningBtn').addEventListener('click', function() {
+        const movieId = this.getAttribute('data-movie-id');
+        // 跳转到学习界面
+        window.location.href = 'movie-quiz.html?movie=' + movieId;
+      });
+      
+      // 添加分类筛选功能
+      document.querySelectorAll('.list-group-item-action').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // 更新活动状态
+          document.querySelectorAll('.list-group-item-action').forEach(item => {
+            item.classList.remove('active');
+          });
+          this.classList.add('active');
+          
+          // 获取分类
+          const category = this.getAttribute('data-category');
+          
+          // 筛选电影
+          if (category === 'all') {
+            document.querySelectorAll('.movie-item').forEach(item => {
+              item.style.display = 'block';
+            });
+          } else {
+            document.querySelectorAll('.movie-item').forEach(item => {
+              if (item.getAttribute('data-category') === category) {
+                item.style.display = 'block';
+              } else {
+                item.style.display = 'none';
+              }
+            });
+          }
+          
+          // 显示对应分类的词汇
+          document.querySelectorAll('.vocab-category').forEach(vocab => {
+            if (category === 'all' || vocab.getAttribute('data-category') === category) {
+              vocab.style.display = 'block';
+            } else {
+              vocab.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+    
+    function updateMovieStatsDisplay() {
+      const movieStats = JSON.parse(localStorage.getItem('movieStats') || '{}');
+      
+      // 设置默认值
+      if (!movieStats.completedMovies) movieStats.completedMovies = 8;
+      if (!movieStats.progressPercentage) movieStats.progressPercentage = 65;
+      
+      // 更新页面显示
+      const completedElement = document.getElementById('completedMovies');
+      const progressElement = document.getElementById('movieProgress');
+      
+      if (completedElement) {
+        completedElement.textContent = movieStats.completedMovies;
+      }
+      
+      if (progressElement) {
+        progressElement.textContent = movieStats.progressPercentage + '%';
+        progressElement.style.width = movieStats.progressPercentage + '%';
+      }
+    }
+  </script>
+</body>
+</html>
