@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LinguaLab | Why Reading Matters</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 页面头部导航栏 -->
+    <header class="site-header">
+        <div class="nav-wrap">
+            <div class="container-1200 d-flex align-items-center justify-content-between">
+                <a class="brand" href="english.html">LinguaLab</a>
+                <nav class="nav-links">
+                    <a href="english.html">首页</a>
+                    <a href="vocab.html">背单词</a>
+                    <a href="audio.html">听音频</a>
+                    <a href="movies.html">看电影</a>
+                    <a href="articles.html" class="active">文章</a>
+                    <a href="courses.html">课程</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 主要内容区域 -->
+    <main class="container-1200 page-space">
+        <div style="margin-bottom: 1rem;">
+            <a href="articles.html" class="btn btn-secondary" id="backButton">← 返回文章列表</a>
+        </div>
+        
+        <h1 class="page-title">Why Reading Matters</h1>
+        
+        <article class="card">
+            <div class="card-body">
+                <p id="paragraph1">Reading matters because it multiplies your exposure to authentic language, and it does so in a way that respects time and attention. A single page can contain dozens of useful expressions, collocations, and sentence patterns that you will encounter again and again in the real world. When you read regularly, your brain begins to recognize these patterns faster. You stop translating word by word and start understanding ideas directly. This shift — from translating to thinking — is the turning point that makes English feel natural rather than foreign.</p>
+                <p id="paragraph2">Extensive reading, especially at a comfortable level, builds confidence. Instead of fighting through every sentence, you move with the rhythm of the story or article. The context carries you forward, and unknown words become easier to guess. Over time, these guesses turn into knowledge. New vocabulary moves from passive recognition to active use, because you have seen it in multiple contexts that show meaning, tone, and typical partners. This is why reading short pieces daily can be more effective than cramming long, difficult texts once a week.</p>
+                <p id="paragraph3">Reading also feeds every other skill. Listening improves because you have already met many structures and phrases with your eyes. Speaking improves because stories give you ready-made frames to express complex ideas. Writing improves because you absorb punctuation, paragraph flow, and the subtle connections that make arguments coherent. If you want balanced progress without burnout, build a simple habit: choose materials you enjoy, read a little every day, and don't worry about understanding everything at once. Enjoyment sustains attention, and attention sustains growth.</p>
+                
+                <!-- 操作按钮区域 -->
+                <div class="mt-4">
+                    <button id="translateBtn" class="btn btn-primary">显示译文</button>
+                    <button id="completeBtn" class="btn btn-success">完成学习</button>
+                </div>
+                
+                <!-- 译文内容区域 -->
+                <div id="translation" style="display: none;">
+                    <p><strong>译文：</strong></p>
+                    <p>阅读很重要，因为它能成倍增加你接触地道语言的机会，而且这种方式尊重你的时间和注意力。单独一页内容可以包含许多在现实世界中会反复遇到的有用表达、搭配和句型。当你定期阅读时，大脑会开始更快地识别这些模式。你不再逐字翻译，而是直接理解想法。这种从翻译到思考的转变是让英语感觉自然而非陌生的转折点。</p>
+                    <p>大量阅读，特别是在舒适的水平上，能建立信心。你不用逐句挣扎，而是跟随着故事或文章的节奏前进。语境会推动你前进，未知的单词也变得更容易猜测。随着时间的推移，这些猜测会转化为知识。新词汇从被动识别转向主动使用，因为你已经在多种语境中见过它们，这些语境展示了意义、语气和典型的搭配。这就是为什么每天阅读短篇文章比每周一次啃读长篇难文更有效。</p>
+                    <p>阅读还能促进其他所有技能的发展。听力得到改善，因为你已经用眼睛接触过许多结构和短语。口语得到改善，因为故事为你提供了表达复杂想法的现成框架。写作得到改善，因为你吸收了标点符号、段落流程和使论证连贯的微妙联系。如果你想要均衡进步而不 burnout，就养成一个简单的习惯：选择你喜欢的材料，每天读一点，不用担心一次就理解所有内容。享受维持注意力，注意力维持成长。</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- 页面底部 -->
+    <footer class="site-footer">
+        <div class="container-1200">
+            <small>© <span id="year"></span> LinguaLab</small>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // 页面加载完成后初始化文章功能
+        window.addEventListener('DOMContentLoaded', function() {
+            initArticlePage('article-reading.html');
+        });
+    </script>
+
+</body>
+</html>

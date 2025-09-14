@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LinguaLab | Learning by Listening</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 页面头部导航栏 -->
+    <header class="site-header">
+        <div class="nav-wrap">
+            <div class="container-1200 d-flex align-items-center justify-content-between">
+                <a class="brand" href="english.html">LinguaLab</a>
+                <nav class="nav-links">
+                    <a href="english.html">首页</a>
+                    <a href="vocab.html">背单词</a>
+                    <a href="audio.html">听音频</a>
+                    <a href="movies.html">看电影</a>
+                    <a href="articles.html" class="active">文章</a>
+                    <a href="courses.html">课程</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 主要内容区域 -->
+    <main class="container-1200 page-space">
+        <div style="margin-bottom: 1rem;">
+            <a href="articles.html" class="btn btn-secondary" id="backButton">← 返回文章列表</a>
+        </div>
+        
+        <h1 class="page-title">Learning by Listening</h1>
+        
+        <article class="card">
+            <div class="card-body">
+                <p id="paragraph1">Listening is more than hearing words; it is recognizing patterns in real time. When you listen regularly at a comfortable speed, you give your brain the chance to form quick, reliable predictions about what comes next. These predictions reduce the need for translation and free up attention for meaning. The result is smoother comprehension and more confidence in conversations, lectures, and media.</p>
+                
+                <p id="paragraph2">To build this habit, choose topics you enjoy and aim for short sessions every day. Consistency is more than intensity. Use the tools that help you stay engaged: variable speed control, transcripts for quick checks, and brief pauses to summarize. Treat each listening session as a small workout: warm up with familiar content, challenge yourself with a new clip, then cool down by noting a few useful phrases. Over time, those phrases will become part of your speaking and writing.</p>
+                
+                <p id="paragraph3">Finally, connect listening with the rest of your learning. Read a short article on the same topic, and review the vocabulary in a spaced repetition deck. When you encounter the same ideas in multiple forms—sound, text, and recall—you strengthen the memory from different angles. This is how listening stops being a passive activity and becomes a powerful driver of overall progress.</p>
+                
+                <!-- 操作按钮区域 -->
+                <div class="mt-4">
+                    <button id="translateBtn" class="btn btn-primary">显示译文</button>
+                    <button id="completeBtn" class="btn btn-success">完成学习</button>
+                </div>
+                
+                <!-- 译文内容区域 -->
+                <div id="translation" style="display: none;">
+                    <p><strong>译文：</strong></p>
+                    <p>听力不仅仅是听到单词，更是在实时识别模式。当你以舒适的速度定期聆听时，你给了大脑机会，使其能够快速、可靠地预测接下来的内容。这些预测减少了翻译的需求，释放注意力去理解意义。结果是更流畅的理解能力和在对话、讲座和媒体中的更多自信。</p>
+                    <p>要养成这个习惯，选择你喜欢的主题，并争取每天进行短时间的学习。一致性比强度更重要。使用能帮助你保持专注的工具：变速控制、快速检查的文本稿，以及简短暂停进行总结。把每次听力练习当作小锻炼：用熟悉的内容热身，用新片段挑战自己，然后通过记录一些有用短语来放松。随着时间推移，这些短语将成为你口语和写作的一部分。</p>
+                    <p>最后，将听力与其他学习连接起来。阅读同一主题的短文，并在间隔重复卡片中复习词汇。当你以多种形式——声音、文本和回忆——遇到相同的概念时，你会从不同角度强化记忆。这就是听力从被动活动转变为整体进步的强大驱动力的方式。</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- 页面底部 -->
+    <footer class="site-footer">
+        <div class="container-1200">
+            <small>© <span id="year"></span> LinguaLab</small>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // 页面加载完成后初始化文章功能
+        window.addEventListener('DOMContentLoaded', function() {
+            initArticlePage('article-listening.html');
+        });
+    </script>
+</body>
+</html>

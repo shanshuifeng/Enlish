@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LinguaLab | Creating a Study Schedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 页面头部导航栏 -->
+    <header class="site-header">
+        <div class="nav-wrap">
+            <div class="container-1200 d-flex align-items-center justify-content-between">
+                <a class="brand" href="english.html">LinguaLab</a>
+                <nav class="nav-links">
+                    <a href="english.html">首页</a>
+                    <a href="vocab.html">背单词</a>
+                    <a href="audio.html">听音频</a>
+                    <a href="movies.html">看电影</a>
+                    <a href="articles.html" class="active">文章</a>
+                    <a href="courses.html">课程</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 主要内容区域 -->
+    <main class="container-1200 page-space">
+        <div style="margin-bottom: 1rem;">
+            <a href="articles.html" class="btn btn-secondary" id="backButton">← 返回文章列表</a>
+        </div>
+        
+        <h1 class="page-title">Creating a Study Schedule</h1>
+        
+        <article class="card">
+            <div class="card-body">
+                <p id="paragraph1">A well-planned study schedule is the foundation of successful language learning. Without structure, it's easy to skip days, focus too much on one skill, or become overwhelmed by ambitious goals. A good schedule balances consistency with flexibility, ensuring you make steady progress without burning out. The key is to start small and gradually increase the intensity as habits form.</p>
+                
+                <p id="paragraph2">Begin by assessing your available time. Look at your daily routine and identify pockets of 15-30 minutes you can dedicate to English. This might be during your commute, right after waking up, or before going to bed. Choose a consistent time each day and treat it as a non-negotiable appointment. Next, assign specific skills to specific days. For example, Mondays and Wednesdays for vocabulary, Tuesdays and Thursdays for listening, and weekends for reading or writing.</p>
+                
+                <p id="paragraph3">Make your schedule visible and track your progress. Use a calendar, planner, or app to mark your study sessions. Each time you complete a session, check it off. This visual representation of your commitment creates momentum and motivation. Be realistic about what you can achieve in each session. It's better to study for 20 minutes daily than to cram for 3 hours once a week. Remember, consistency beats intensity in language learning. If you miss a day, don't stress—just pick up where you left off.</p>
+                
+                <!-- 操作按钮区域 -->
+                <div class="mt-4">
+                    <button id="translateBtn" class="btn btn-primary">显示译文</button>
+                    <button id="completeBtn" class="btn btn-success">完成学习</button>
+                </div>
+                
+                <!-- 译文内容区域 -->
+                <div id="translation" style="display: none;">
+                    <p><strong>译文：</strong></p>
+                    <p>一个规划良好的学习计划是成功语言学习的基础。没有结构，很容易跳过几天，过分专注于一项技能，或者被雄心勃勃的目标压得喘不过气来。一个好的计划在一致性和灵活性之间取得平衡，确保你在不筋疲力尽的情况下稳步进步。关键是从小事做起，随着习惯的养成逐渐增加强度。</p>
+                    <p>首先评估你的可用时间。查看你的日常生活，找出可以 dedicated 15-30 分钟学习英语的时间段。这可能是在通勤途中、醒来后，或者睡觉前。每天选择一个固定的时间，把它当作不可协商的约会。接下来，为特定的日子分配特定的技能。例如，周一和周三学习词汇，周二和周四练习听力，周末进行阅读或写作。</p>
+                    <p>让你的计划可见并跟踪你的进度。使用日历、计划表或应用程序来标记你的学习时段。每次完成一个学习时段，就打个勾。这种对你的承诺的视觉呈现会产生动力和激励。对每个学习时段你能完成什么要现实一些。每天学习 20 分钟比每周一次学习 3 小时要好。记住，在语言学习中，一致性胜过强度。如果你错过了一天，不要紧张——只要从你停下来的地方继续就行。</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- 页面底部 -->
+    <footer class="site-footer">
+        <div class="container-1200">
+            <small>© <span id="year"></span> LinguaLab</small>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // 页面加载完成后初始化文章功能
+        window.addEventListener('DOMContentLoaded', function() {
+            initArticlePage('article-schedule.html');
+        });
+    </script>
+</body>
+</html>
