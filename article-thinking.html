@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LinguaLab | Cultural Awareness in Language</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 页面头部导航栏 -->
+    <header class="site-header">
+        <div class="nav-wrap">
+            <div class="container-1200 d-flex align-items-center justify-content-between">
+                <a class="brand" href="english.html">LinguaLab</a>
+                <nav class="nav-links">
+                    <a href="english.html">首页</a>
+                    <a href="vocab.html">背单词</a>
+                    <a href="audio.html">听音频</a>
+                    <a href="movies.html">看电影</a>
+                    <a href="articles.html" class="active">文章</a>
+                    <a href="courses.html">课程</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- 主要内容区域 -->
+    <main class="container-1200 page-space">
+        <div style="margin-bottom: 1rem;">
+            <a href="articles.html" class="btn btn-secondary" id="backButton">← 返回文章列表</a>
+        </div>
+        
+        <h1 class="page-title">Cultural Awareness in Language</h1>
+        
+        <article class="card">
+            <div class="card-body">
+                <p id="paragraph1">Language is inseparable from culture. Every word, phrase, and expression carries cultural baggage that native speakers absorb unconsciously. For language learners, understanding this cultural context is essential for true fluency. Without it, you may use correct grammar and vocabulary but still sound awkward or even offensive. Cultural awareness transforms your English from textbook-perfect to naturally appropriate in real-world situations.</p>
+                
+                <p id="paragraph2">One way to develop cultural awareness is through exposure to authentic materials. Watch movies and TV shows, read newspapers and magazines, and listen to podcasts made by native speakers. Pay attention to how people greet each other, express opinions, make requests, and handle disagreements. Notice the use of humor, idioms, and indirect language. These elements reveal cultural values like politeness, directness, formality, and social hierarchy. Understanding these patterns helps you communicate more effectively and avoid misunderstandings.</p>
+                
+                <p id="paragraph3">Another important aspect is understanding cultural differences in communication styles. Western cultures tend to value directness, individualism, and explicit communication, while many Asian cultures prefer indirectness, collectivism, and implicit communication. For example, a Westerner might say "No, that won't work" while an Asian speaker might say "That might be difficult." Both express the same idea, but the cultural implications are different. By learning these nuances, you can adapt your communication style to different contexts and audiences, making you a more versatile and effective English speaker.</p>
+                
+                <!-- 操作按钮区域 -->
+                <div class="mt-4">
+                    <button id="translateBtn" class="btn btn-primary">显示译文</button>
+                    <button id="completeBtn" class="btn btn-success">完成学习</button>
+                </div>
+                
+                <!-- 译文内容区域 -->
+                <div id="translation" style="display: none;">
+                    <p><strong>译文：</strong></p>
+                    <p>语言与文化密不可分。每个单词、短语和表达都承载着母语者无意识吸收的文化包袱。对于语言学习者来说，理解这种文化背景对真正流利至关重要。没有它，你可能使用正确的语法和词汇，但听起来仍然很别扭甚至令人反感。文化意识将你的英语从教科书式的完美转变为在现实世界情境中自然恰当的表达。</p>
+                    <p>培养文化意识的一种方法是接触真实材料。观看电影和电视节目，阅读报纸和杂志，聆听母语者制作的播客。注意人们如何互相问候、表达观点、提出请求和处理分歧。留意幽默、习语和间接语言的使用。这些元素揭示了礼貌、直接性、正式性和社会等级制度等文化价值观。理解这些模式有助于你更有效地沟通，避免误解。</p>
+                    <p>另一个重要方面是理解文化差异在沟通风格上的体现。西方文化倾向于重视直接性、个人主义和明确沟通，而许多亚洲文化更喜欢间接性、集体主义和隐含沟通。例如，西方人可能会说"不，那行不通"，而亚洲说话者可能会说"那可能有困难"。两者表达了相同的想法，但文化含义不同。通过学习这些细微差别，你可以适应不同的沟通风格和受众，使你成为一个更多才多艺和有效的英语使用者。</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- 页面底部 -->
+    <footer class="site-footer">
+        <div class="container-1200">
+            <small>© <span id="year"></span> LinguaLab</small>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
+    <script>
+        // 页面加载完成后初始化文章功能
+        window.addEventListener('DOMContentLoaded', function() {
+            initArticlePage('article-culture.html');
+        });
+    </script>
+</body>
+</html>

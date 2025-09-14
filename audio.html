@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinguaLab | 听音频</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+    <div class="nav-wrap">
+      <div class="container-1200 d-flex align-items-center justify-content-between">
+        <a class="brand" href="english.html">LinguaLab</a>
+        <nav class="nav-links">
+          <a href="english.html">首页</a>
+          <a href="vocab.html">背单词</a>
+          <a href="audio.html" class="active">听音频</a>
+          <a href="movies.html">看电影</a>
+          <a href="articles.html">文章</a>
+          <a href="courses.html">课程</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+<main class="container-1200 page-space">
+  <div class="row">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">音频分类</div>
+        <div class="list-group list-group-flush">
+          <a href="#" class="list-group-item list-group-item-action active" data-category="all">全部音频</a>
+          <a href="#" class="list-group-item list-group-item-action" data-category="daily">日常对话</a>
+          <a href="#" class="list-group-item list-group-item-action" data-category="news">新闻资讯</a>
+          <a href="#" class="list-group-item list-group-item-action" data-category="story">故事讲述</a>
+          <a href="#" class="list-group-item list-group-item-action" data-category="business">商务英语</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-9">
+      <h1 class="page-title">听音频</h1>
+      <div class="row g-3">
+        <div class="col-12">
+          <ul id="audioList" class="list-group">
+            <li class="list-group-item" data-src="银临 _ Aki阿杰 - 牵丝戏.flac" data-category="daily" >日常英语对话 - 第 1 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="李荣浩 - 年少有为.flac" data-category="business">商务英语 - 第 2 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="李荣浩 - 不将就.flac" data-category="news">英语新闻速递 - 第 3 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="陈奕迅 - 淘汰.flac" data-category="story">英语故事 - 第 4 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="陈奕迅 - 浮夸.flac" data-category="business">学术英语 - 第 5 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="陈奕迅 - 任我行.flac" data-category="daily">旅游英语 - 第 6 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="蔡依林 - 日不落.flac" data-category="daily">英语发音练习 - 第 7 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="Two Steps From Hell _ Thomas Bergersen - Victory.flac" data-category="story">英语文化介绍 - 第 8 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="Rival _ Cadmium _ Harley Bird - Seasons.flac" data-category="news">科技英语 - 第 9 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="DAOKO _ 米津玄師 - 打上花火.flac" data-category="daily">健康生活 - 第 10 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="吴诗诗 - 山茶花读不懂白玫瑰.ogg" data-category="story">教育话题 - 第 11 集 <span class="badge bg-primary float-end">加载中...</span></li>
+            <li class="list-group-item" data-src="宁檬LemonNing - 未命名夏天 (江西师大附中2022高考加油曲).ogg" data-category="news">环境与可持续发展 - 第 12 集 <span class="badge bg-primary float-end">加载中...</span></li>
+          </ul>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <audio id="player" controls preload="none" style="width:100%"></audio>
+              <div class="mt-2 d-flex align-items-center gap-2">
+                <label>播放速度</label>
+                <select id="speed" class="form-select" style="width:auto">
+                  <option value="0.75">0.75x</option>
+                  <option value="1" selected>1x</option>
+                  <option value="1.25">1.25x</option>
+                  <option value="1.5">1.5x</option>
+                  <option value="2">2x</option>
+                </select>
+                <button id="prevEp" class="btn btn-outline-secondary">上一集</button>
+                <button id="nextEp" class="btn btn-outline-secondary">下一集</button>
+              </div>
+              <div class="mt-2"><small id="audioProgress">进度</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container-1200">
+    <small>© <span id="year"></span> LinguaLab</small>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('[data-category]').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('[data-category]').forEach(item => {
+          if (item.classList.contains('list-group-item-action')) {
+            item.classList.remove('active');
+          }
+        });
+        if (this.classList.contains('list-group-item-action')) {
+          this.classList.add('active');
+        }
+        const category = this.getAttribute('data-category');
+        const audioItems = document.querySelectorAll('#audioList .list-group-item');
+        if (category === 'all') {
+          audioItems.forEach(item => {
+            item.style.display = 'block';
+          });
+        } else {
+          audioItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            if (itemCategory === category) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        }
+      });
+    });
+    document.querySelectorAll('#audioList .list-group-item').forEach(item => {
+      item.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('#audioList .list-group-item').forEach(i => {
+          i.classList.remove('active');
+        });
+        this.classList.add('active');
+        const audioSrc = this.getAttribute('data-src');
+        const player = document.getElementById('player');
+        player.src = audioSrc;
+        player.play();
+        const audioItems = document.querySelectorAll('#audioList .list-group-item');
+        const currentIndex = Array.from(audioItems).indexOf(this);
+        document.getElementById('audioProgress').textContent = `Episode ${currentIndex + 1}/${audioItems.length}`;
+      });
+    });
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+    document.querySelectorAll('#audioList .list-group-item').forEach(item => {
+      const audioSrc = item.getAttribute('data-src');
+      const badge = item.querySelector('.badge');
+      const tempAudio = document.createElement('audio');
+      tempAudio.src = audioSrc;
+      tempAudio.addEventListener('loadedmetadata', function() {
+        const duration = tempAudio.duration;
+        if (!isNaN(duration) && duration > 0) {
+          badge.textContent = formatTime(duration);
+        }
+      });
+      tempAudio.addEventListener('error', function() {
+        badge.textContent = '时长未知';
+      });
+    });
+    const player = document.getElementById('player');
+    player.addEventListener('loadedmetadata', function() {
+      const activeItem = document.querySelector('#audioList .list-group-item.active');
+      if (activeItem) {
+        const badge = activeItem.querySelector('.badge');
+        const duration = player.duration;
+        if (!isNaN(duration) && duration > 0) {
+          badge.textContent = formatTime(duration);
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

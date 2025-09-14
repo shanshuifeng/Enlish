@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinguaLab | Courses</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <div class="container-1200 d-flex align-items-center justify-content-between">
+        <a class="brand" href="english.html">LinguaLab</a>
+        <nav class="nav-links">
+          <a href="english.html">首页</a>
+          <a href="vocab.html">背单词</a>
+          <a href="audio.html">听音频</a>
+          
+          <a href="movies.html">看电影</a>
+          <a href="articles.html">文章</a>
+          <a href="courses.html" class="active">课程</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="container-1200 page-space">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">课程分类</div>
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action active" data-category="all">全部课程</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="基础课程">基础课程</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="进阶课程">进阶课程</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="专业课程">专业课程</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="考试辅导">考试辅导</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="实用技能">实用技能</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="商务英语">商务英语</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="学术英语">学术英语</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="旅游英语">旅游英语</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="儿童英语">儿童英语</a>
+            <a href="#" class="list-group-item list-group-item-action" data-category="老年英语">老年英语</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-md-9">
+        <div class="text-center mb-5">
+          <h1 class="page-title">课程中心</h1>
+          <p class="text-body-secondary lead mx-auto" style="max-width: 600px;">为中文母语学习者定制：配中文简介，支持收藏。</p>
+        </div>
+
+        <div class="row g-4" id="courseGrid">
+          <!-- 课程内容将通过JavaScript动态生成 -->
+        </div>
+
+        <!-- 收藏的课程 -->
+        <div id="favoritesSection" class="mt-5">
+          <h3>我收藏的课程</h3>
+          <div class="row g-4" id="favCoursesContainer">
+            <!-- 收藏的课程将在这里显示 -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-1200">
+      <small>© <span id="year"></span> LinguaLab</small>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // 页面加载时检查是否需要更新统计数据
+    window.addEventListener('DOMContentLoaded', function() {
+      if (sessionStorage.getItem('updateCourseStats') === 'true') {
+        // 更新显示的统计数据
+        updateCourseStatsDisplay();
+        // 清除标记
+        sessionStorage.removeItem('updateCourseStats');
+      }
+      
+      // 添加分类筛选功能
+      document.querySelectorAll('.list-group-item-action').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          // 更新活动状态
+          document.querySelectorAll('.list-group-item-action').forEach(item => {
+            item.classList.remove('active');
+          });
+          this.classList.add('active');
+          
+          // 获取分类
+          const category = this.getAttribute('data-category');
+          
+          // 筛选课程
+          const courseCards = document.querySelectorAll('#courseGrid .col-4');
+          if (category === 'all') {
+            courseCards.forEach(card => {
+              card.style.display = 'block';
+            });
+          } else {
+            courseCards.forEach(card => {
+              const courseCategory = card.querySelector('p:nth-child(3)').textContent;
+              if (courseCategory.includes(category)) {
+                card.style.display = 'block';
+              } else {
+                card.style.display = 'none';
+              }
+            });
+          }
+        });
+      });
+      
+      // 页面加载时显示收藏的课程
+      renderFavoriteCourses();
+      
+      // 绑定清空收藏按钮事件
+      document.getElementById('clearFavorites')?.addEventListener('click', function() {
+        clearFavorites();
+      });
+      
+      // 绑定购买全部收藏课程按钮事件
+      document.getElementById('buyAllFavorites')?.addEventListener('click', function() {
+        buyAllFavorites();
+      });
+    });
+    
+    function updateCourseStatsDisplay() {
+      const courseStats = JSON.parse(localStorage.getItem('courseStats') || '{}');
+      
+      // 设置默认值
+      if (!courseStats.enrolledCourses) courseStats.enrolledCourses = 3;
+      if (!courseStats.completionRate) courseStats.completionRate = 45;
+      if (!courseStats.studyHours) courseStats.studyHours = 28;
+      
+      // 更新页面显示
+      document.getElementById('enrolledCourses').textContent = `${courseStats.enrolledCourses} 门`;
+      document.getElementById('completionRate').textContent = `${courseStats.completionRate}%`;
+      document.getElementById('studyHours').textContent = `${courseStats.studyHours} 小时`;
+    }
+    
+    // 在收藏状态改变时更新收藏课程显示
+    document.addEventListener('favoritesUpdated', function() {
+      renderFavoriteCourses();
+    });
+  </script>
+
+<!-- 课程详情模态框 -->
+<div class="modal fade" id="courseDetailModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="courseDetailTitle">课程详情</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-8">
+            <h4 id="courseName">课程名称</h4>
+            <p id="courseDescription" class="text-muted">课程描述</p>
+            <div class="mt-4">
+              <h5>课程信息</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <strong>课程分类:</strong> <span id="courseCategory">基础课程</span>
+                </li>
+                <li class="list-group-item">
+                  <strong>授课老师:</strong> <span id="courseTeacher">资深英语教师</span>
+                </li>
+                <li class="list-group-item">
+                  <strong>课程节数:</strong> <span id="courseLessons">12节</span>
+                </li>
+                <li class="list-group-item">
+                  <strong>总时长:</strong> <span id="courseDuration">8小时</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4">
+              <h5>课程内容</h5>
+              <div id="courseContent">
+                <p>课程内容介绍...</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-body text-center">
+                <h5 class="card-title">课程价格</h5>
+                <h3 class="text-primary">¥<span id="coursePrice">99</span></h3>
+                <button class="btn btn-primary w-100 mt-3 buy-course" id="modalBuyBtn">购买课程</button>
+                <a href="coming-soon.html" class="btn btn-success w-100 mt-3" id="modalStartLearningBtn" style="display: none;">开始学习</a>
+                <button class="btn btn-outline-success w-100 mt-2 toggle-fav" id="modalFavBtn">收藏课程</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 收藏课程模态框 -->
+<div class="modal fade" id="favoritesModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">我收藏的课程</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <ul class="list-group" id="favList">
+          <!-- 收藏的课程将在这里显示 -->
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

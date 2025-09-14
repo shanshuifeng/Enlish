@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LinguaLab | Build Your Vocabulary</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-wrap">
+      <div class="container-1200 d-flex align-items-center justify-content-between">
+        <a class="brand" href="english.html">LinguaLab</a>
+        <nav class="nav-links">
+          <a href="english.html">首页</a>
+          <a href="vocab.html">背单词</a>
+          <a href="audio.html">听音频</a>
+          <a href="movies.html">看电影</a>
+          <a href="articles.html" class="active">文章</a>
+          <a href="courses.html">课程</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+  <main class="container-1200 page-space">
+    <div style="margin-bottom: 1rem;">
+      <a href="articles.html" class="btn btn-secondary" id="backButton">← 返回文章列表</a>
+    </div>
+    <h1 class="page-title">Build Your Vocabulary</h1>
+    <article class="card">
+      <div class="card-body">
+        <p id="paragraph1">Vocabulary grows fastest when words are connected to meaning, context, and use. Instead of memorizing isolated lists, learn phrases and sentences that show how a word behaves with partners. For example, we say make a decision, take a break, set a goal. These partners are not random; they reflect patterns native speakers rely on. The more patterns you notice, the less effort it takes to recall the right expression when you need it.</p>
+        <p id="paragraph2">Spaced repetition is the simplest way to keep words alive. Review small batches on a regular schedule, and always include an example sentence. When a card feels easy, celebrate and move on; when a card feels hard, rewrite the example to make it memorable. Add a short story or a personal memory that uses the word. Memory loves meaning, and meaning lives in stories. With this approach, even ten minutes a day can make a visible difference within weeks.</p>
+        <p id="paragraph3">Finally, bridge vocabulary with production. After you read or listen, pick three expressions and use them in your own sentence or short diary entry. Share it with a friend or read it aloud. This tiny act of production tells your brain the word matters in your life. Over time, your vocabulary stops being something you "know" and becomes something you can use naturally, without translation, in real time.</p>
+        <div class="mt-4">
+          <button id="translateBtn" class="btn btn-primary">显示译文</button>
+          <button id="completeBtn" class="btn btn-success">完成学习</button>
+        </div>
+        <div id="translation" style="display: none;">
+          <p><strong>译文：</strong></p>
+          <p>当单词与意义、语境和用法联系在一起时，词汇增长最快。与其死记硬背孤立的词汇表，不如学习短语和句子，展示单词如何与搭配词一起使用。例如，我们说make a decision（做决定）、take a break（休息一下）、set a goal（设定目标）。这些搭配不是随机的，它们反映了母语使用者所依赖的模式。你注意到的模式越多，需要时回忆起正确表达所需的努力就越少。</p>
+          <p>间隔重复是保持词汇活跃的最简单方法。按规律时间表复习小批量单词，并始终包含例句。当一张卡片感觉简单时，庆祝一下然后继续；当一张卡片感觉困难时，重写例句使其令人难忘。添加一个使用该词的短故事或个人记忆。记忆喜欢意义，而意义存在于故事中。采用这种方法，即使每天十分钟也能在几周内产生明显差异。</p>
+          <p>最后，将词汇与产出联系起来。在阅读或聆听后，挑选三个表达并在你自己的句子或简短日记条目中使用它们。与朋友分享或大声朗读。这种微小的产出行为告诉你的大脑这个词在你的生活中很重要。随着时间的推移，你的词汇不再是你"知道"的东西，而是你可以自然地、无需翻译地、实时使用的东西。</p>
+        </div>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="container-1200">
+      <small>© <span id="year"></span> LinguaLab</small>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+        // 页面加载完成后初始化文章功能
+        window.addEventListener('DOMContentLoaded', function() {
+            initArticlePage('article-vocab.html');
+        });
+    </script>
+</body>
+</html>
